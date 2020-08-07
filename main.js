@@ -1,8 +1,11 @@
 /* eslint-disable max-classes-per-file */
-const assert = require("assert")
+// const assert = require("assert")
 
 // Once you understand the challenge, whiteboard the logic.
 // Create a list of steps your app needs to do (code plan).
+//
+//
+// 1. needs to be able to add add People to Players. onClick, the People are .pushed into the Players column and removed from the People list while getting new values of a player added to them.
 //
 // Translate to pseudo code.
 // Translate to JavaScript on paper.
@@ -10,18 +13,28 @@ const assert = require("assert")
 // Start by working through the existing code to understand it and write comments explaining what each line does.
 // Put your code plan in the README.md file or your repo
 
-// Work through the follow challenges:
+// Work through the following challenges:
+
 //     Use the class keyword to create a template of a dodgeBallPlayer that requires canThrowBall, canDodgeBall, hasPaid, isHealthy, yearsExperience.
+
 //     Push these new dodge ball Player objects into a new array and then display them in the DOM as available players to pick.
+
 //     Add a button to each new player that will allow each one to be selected for either Blue Team or Red Team and now has mascot and teamColor
+
 //     Use the this keyword to assign each player to a team with an onclick. Assign them to either Blue Team or Red Team.
+
 //     Display the two teams in a new list in the DOM with appropriate titles.
+
 //     Create 3 tests for your application.
 
 // 20pts - Code Plan -  Include this in a README.md file in your folder with comment in your code.
+
 // 20pts - Can add People to Players - When clicked the people are added to the Players column and removed from the People list while getting new values of a player added to them.
-// 20pts - Can add Players to different Teams - When we click on the blue button the Player is added to the blue team and removed from the Player list while also getting the keys color and mascot extended to them when they are moved to a team.
+
+// 20pts - Can add dodgeballPlayers to different [Teams] - When we *click* on the globoGym <button> the dodgeballPlayer is added to the globoGymTeam and removed from the arrayOfPeople while also getting the properties/keys, "color" and "mascot" *extended* to them when they are moved to a team.
+
 // 20pts - Uses class - This is not a hack job. You should use class to add the new properties you need and extend when you need.
+
 // 20pts - Minimum 3 Unit Tests - Use Mocha and Chai to give us at least 3 unit tests that prove a person becomes a player and a player becomes a teammate.
 
 // establishes an array of objects representing the players and their attributes
@@ -32,6 +45,11 @@ const arrOfPeople = [
     age: 55,
     skillSet: "welding",
     placeBorn: "Omaha, Nebraska",
+    canThrowBall: true,
+    canDodgeBall: true,
+    hasPaid: true,
+    isHealthy: false,
+    yearsExperience: 2,
   },
   {
     id: 3,
@@ -39,6 +57,11 @@ const arrOfPeople = [
     age: 35,
     skillSet: "fishing",
     placeBorn: "Louisville, Kentucky",
+    canThrowBall: true,
+    canDodgeBall: true,
+    hasPaid: true,
+    isHealthy: true,
+    yearsExperience: 15,
   },
   {
     id: 4,
@@ -46,6 +69,11 @@ const arrOfPeople = [
     age: 20,
     skillSet: "tic tac toe",
     placeBorn: "Pawnee, Texas",
+    canThrowBall: true,
+    canDodgeBall: true,
+    hasPaid: true,
+    isHealthy: true,
+    yearsExperience: 3,
   },
   {
     id: 5,
@@ -53,6 +81,11 @@ const arrOfPeople = [
     age: 28,
     skillSet: "pipe fitting",
     placeBorn: "New York, New York",
+    canThrowBall: true,
+    canDodgeBall: true,
+    hasPaid: true,
+    isHealthy: true,
+    yearsExperience: 1,
   },
   {
     id: 6,
@@ -60,6 +93,11 @@ const arrOfPeople = [
     age: 20,
     skillSet: "boom-a-rang throwing",
     placeBorn: "Perth, Australia",
+    canThrowBall: true,
+    canDodgeBall: true,
+    hasPaid: true,
+    isHealthy: true,
+    yearsExperience: 5,
   },
   {
     id: 7,
@@ -67,6 +105,11 @@ const arrOfPeople = [
     age: 17,
     skillSet: "acrobatics",
     placeBorn: "Los Angeles, California",
+    canThrowBall: true,
+    canDodgeBall: true,
+    hasPaid: true,
+    isHealthy: true,
+    yearsExperience: 15,
   },
   {
     id: 8,
@@ -74,10 +117,15 @@ const arrOfPeople = [
     age: 32,
     skillSet: "jump rope",
     placeBorn: "New Orleans, Louisiana",
+    canThrowBall: true,
+    canDodgeBall: true,
+    hasPaid: true,
+    isHealthy: true,
+    yearsExperience: 4,
   },
 ]
 // creates empty arrays for lists of players and teams
-const listOfPlayers = ["Walter Cole"]
+const listOfPlayers = []
 const globoGym = []
 const averageJoes = []
 
@@ -99,7 +147,6 @@ class DodgeBallPlayer {
     this.yearsExperience = yearsExperience
   }
 }
-const vinceVaughn = new DodgeBallPlayer("vince", true, true, true, true, 5)
 
 class AverageJoesTeammate extends DodgeBallPlayer {
   constructor(
@@ -108,7 +155,9 @@ class AverageJoesTeammate extends DodgeBallPlayer {
     canDodgeBall,
     hasPaid,
     isHealthy,
-    yearsExperience
+    yearsExperience,
+    teamName,
+    mascot
   ) {
     super(
       player,
@@ -124,6 +173,8 @@ class AverageJoesTeammate extends DodgeBallPlayer {
     this.hasPaid = hasPaid
     this.isHealthy = isHealthy
     this.yearsExperience = yearsExperience
+    this.teamName = teamName
+    this.mascot = mascot
   }
 }
 class GloboGymTeammate extends DodgeBallPlayer {
@@ -133,7 +184,9 @@ class GloboGymTeammate extends DodgeBallPlayer {
     canDodgeBall,
     hasPaid,
     isHealthy,
-    yearsExperience
+    yearsExperience,
+    teamName,
+    mascot
   ) {
     super(
       player,
@@ -149,19 +202,10 @@ class GloboGymTeammate extends DodgeBallPlayer {
     this.hasPaid = hasPaid
     this.isHealthy = isHealthy
     this.yearsExperience = yearsExperience
+    this.teamName = teamName
+    this.mascot = mascot
   }
 }
-
-const avgVinceVaughn = new AverageJoesTeammate(
-  "vince",
-  true,
-  true,
-  true,
-  true,
-  5
-)
-const benStiller = new DodgeBallPlayer("ben", true, true, true, true, 5)
-const globoBenStiller = new GloboGymTeammate("ben", true, true, true, true, 5)
 
 // populate HTML function
 const listPeopleChoices = () => {
@@ -171,7 +215,7 @@ const listPeopleChoices = () => {
     const button = document.createElement("button")
     button.innerHTML = "Make Player"
     button.addEventListener("click", function () {
-      makePlayer(person.id)
+      makePlayer(person)
     })
     li.appendChild(button)
     li.appendChild(
@@ -180,9 +224,64 @@ const listPeopleChoices = () => {
     listElement.append(li)
   })
 }
-
 const makePlayer = (id) => {
-  alert(`li ${id} was clicked!`)
+  const eligibleList = document.getElementById("players")
+  const eligibleLI = document.createElement("LI")
+  const globoList = document.getElementById("globo")
+  const joesList = document.getElementById("joes")
+  const globoLI = document.createElement("LI")
+  const joesLI = document.createElement("LI")
+  eligibleLI.appendChild(
+    document.createTextNode(
+      id.name + " - " + "Years Exp: " + id.yearsExperience
+    )
+  )
+  const globoButton = document.createElement("BUTTON")
+  const avgJoeButton = document.createElement("BUTTON")
+  globoButton.innerHTML = "Sign for Team Globo Gym"
+  avgJoeButton.innerHTML = "Sign for Team Average Joes"
+  eligibleLI.append(avgJoeButton)
+  eligibleLI.append(globoButton)
+  eligibleList.append(eligibleLI)
+  globoButton.addEventListener("click", function () {
+    // if(id.canDodgeBall = true && id.canThrowBall = true &&)
+    // alert(sry this guy too old) else {
+    globoGym.push(
+      new GloboGymTeammate(
+        id.name,
+        id.canThrowBall,
+        id.canDodgeBall,
+        id.hasPaid,
+        id.isHealthy,
+        id.yearsExp,
+        "Globo Gym",
+        "Purple Cobras"
+      )
+    )
+    globoList.append(globoLI)
+    globoLI.appendChild(
+      document.createTextNode(`${id.name} - Years Exp: ${id.yearsExperience}`)
+    )
+  })
+
+  avgJoeButton.addEventListener("click", function () {
+    averageJoes.push(
+      new AverageJoesTeammate(
+        id.name,
+        id.canThrowBall,
+        id.canDodgeBall,
+        id.hasPaid,
+        id.isHealthy,
+        id.yearsExp,
+        "Average Joes",
+        "Joes"
+      )
+    )
+    joesList.append(joesLI)
+    joesLI.appendChild(
+      document.createTextNode(`${id.name} - Years Exp: ${id.yearsExperience}`)
+    )
+  })
 }
 
 if (typeof describe === "function") {
