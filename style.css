@@ -1,0 +1,39 @@
+body {
+  font-family: "Architects Daughter", cursive;
+  font-size: 15px;
+  /* background-image: url(./67hjbt00.bmp);
+  background-attachment: fixed;
+  background-size: cover; */
+}
+
+button {
+  border-radius: 5px;
+  font-size: 10px;
+  background-color: forestgreen;
+  color: white;
+}
+
+button:focus {
+  outline: none;
+}
+
+.globo-team-list {
+  color: deeppink;
+  background-color: white;
+}
+
+.joes-team-list {
+  color: deepskyblue;
+  background-color: white;
+}
+
+.people-list {
+  color: sandybrown;
+  font-weight: bold;
+  background-color: white;
+}
+
+.eligible-list {
+  color: springgreen;
+  background-color: white;
+}
