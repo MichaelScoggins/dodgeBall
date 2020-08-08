@@ -131,7 +131,7 @@ class AverageJoesTeammate extends DodgeBallPlayer {
     hasPaid,
     isHealthy,
     yearsExperience,
-    teamName,
+    color,
     mascot
   ) {
     super(
@@ -148,7 +148,7 @@ class AverageJoesTeammate extends DodgeBallPlayer {
     this.hasPaid = hasPaid
     this.isHealthy = isHealthy
     this.yearsExperience = yearsExperience
-    this.teamName = teamName
+    this.color = color
     this.mascot = mascot
   }
 }
@@ -160,7 +160,7 @@ class GloboGymTeammate extends DodgeBallPlayer {
     hasPaid,
     isHealthy,
     yearsExperience,
-    teamName,
+    color,
     mascot
   ) {
     super(
@@ -177,7 +177,7 @@ class GloboGymTeammate extends DodgeBallPlayer {
     this.hasPaid = hasPaid
     this.isHealthy = isHealthy
     this.yearsExperience = yearsExperience
-    this.teamName = teamName
+    this.color = color
     this.mascot = mascot
   }
 }
@@ -276,7 +276,7 @@ const makePlayer = (id) => {
           id.hasPaid,
           id.isHealthy,
           id.yearsExp,
-          "Globo Gym",
+          "Red",
           "Purple Cobras"
         )
       )
@@ -315,7 +315,7 @@ const makePlayer = (id) => {
           id.hasPaid,
           id.isHealthy,
           id.yearsExp,
-          "Average Joes",
+          "Blue",
           "Joes"
         )
       )
