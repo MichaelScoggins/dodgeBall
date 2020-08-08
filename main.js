@@ -40,22 +40,10 @@
 // establishes an array of objects representing the players and their attributes
 const arrOfPeople = [
   {
-    id: 2,
-    name: "Charles Young",
-    age: 55,
-    skillSet: "welding",
-    placeBorn: "Omaha, Nebraska",
-    canThrowBall: true,
-    canDodgeBall: true,
-    hasPaid: true,
-    isHealthy: false,
-    yearsExperience: 2,
-  },
-  {
-    id: 3,
-    name: "Judy Twilight",
-    age: 35,
-    skillSet: "fishing",
+    id: 1,
+    name: "Kate Veatch",
+    age: 31,
+    skillSet: "CAN THROW A BALL",
     placeBorn: "Louisville, Kentucky",
     canThrowBall: true,
     canDodgeBall: true,
@@ -64,10 +52,10 @@ const arrOfPeople = [
     yearsExperience: 15,
   },
   {
-    id: 4,
+    id: 2,
     name: "Cynthia Doolittle",
     age: 20,
-    skillSet: "tic tac toe",
+    skillSet: "CAN DODGE A BALL",
     placeBorn: "Pawnee, Texas",
     canThrowBall: true,
     canDodgeBall: true,
@@ -76,10 +64,34 @@ const arrOfPeople = [
     yearsExperience: 3,
   },
   {
-    id: 5,
+    id: 3,
+    name: "Charles Young",
+    age: 75,
+    skillSet: "ALREADY HAS A SIGNED WILL",
+    placeBorn: "Omaha, Nebraska",
+    canThrowBall: true,
+    canDodgeBall: true,
+    hasPaid: true,
+    isHealthy: false,
+    yearsExperience: 2,
+  },
+  {
+    id: 4,
     name: "John Willouby",
     age: 28,
-    skillSet: "pipe fitting",
+    skillSet: "CAN DODGE A WRENCH",
+    placeBorn: "New York, New York",
+    canThrowBall: true,
+    canDodgeBall: true,
+    hasPaid: true,
+    isHealthy: true,
+    yearsExperience: 1,
+  },
+  {
+    id: 5,
+    name: "Justin",
+    age: 34,
+    skillSet: "CAN'T DODGE A WRENCH",
     placeBorn: "New York, New York",
     canThrowBall: true,
     canDodgeBall: true,
@@ -89,9 +101,9 @@ const arrOfPeople = [
   },
   {
     id: 6,
-    name: "Stan Honest",
-    age: 20,
-    skillSet: "boom-a-rang throwing",
+    name: "White Goodman",
+    age: 31,
+    skillSet: "LIKES TO BREAK A MENTAL SWEAT TOO",
     placeBorn: "Perth, Australia",
     canThrowBall: true,
     canDodgeBall: true,
@@ -103,7 +115,7 @@ const arrOfPeople = [
     id: 7,
     name: "Mia Watu",
     age: 17,
-    skillSet: "acrobatics",
+    skillSet: "ACROBATICS",
     placeBorn: "Los Angeles, California",
     canThrowBall: true,
     canDodgeBall: true,
@@ -113,9 +125,9 @@ const arrOfPeople = [
   },
   {
     id: 8,
-    name: "Walter Cole",
+    name: "Gordon",
     age: 32,
-    skillSet: "jump rope",
+    skillSet: "EXTREME IRONING",
     placeBorn: "New Orleans, Louisiana",
     canThrowBall: true,
     canDodgeBall: true,
@@ -214,14 +226,17 @@ const listPeopleChoices = () => {
   bodyElement.removeChild(listButton)
   const listElement = document.getElementById("people")
   listElement.className = "people-list"
+  const ineligiblePlayer = document.createElement("LI")
   arrOfPeople.map((person) => {
     const li = document.createElement("li")
     const button = document.createElement("button")
     button.innerHTML = "Make Player"
-    button.addEventListener("click", function () {
-      makePlayer(person)
-      li.removeChild(this)
-    })
+    li.appendChild(button)
+    li.appendChild(
+      document.createTextNode(
+        `${person.name}  -  Special Skill: ${person.skillSet}  -  Years of Experience: ${person.yearsExperience}`
+      )
+    )
     if (
       person.canThrowBall == true &&
       person.canDodgeBall == true &&
@@ -229,17 +244,34 @@ const listPeopleChoices = () => {
       person.isHealthy == true &&
       person.yearsExperience > 0
     ) {
-      li.appendChild(button)
-      li.appendChild(
-        document.createTextNode(person.name + " - " + person.skillSet)
-      )
+      listElement.append(li)
     } else {
-      const ineligiblePlayer = document.createElement("LI")
-      li.appendChild(ineligiblePlayer)
-      ineligiblePlayer.innerHTML = `${person.name} did not meet all pre-game criteria`
+      listElement.append(ineligiblePlayer)
+      ineligiblePlayer.appendChild(button)
+      ineligiblePlayer.appendChild(
+        document.createTextNode(
+          `${person.name}  -  Special Skill: ${person.skillSet}  -  Years of Experience: ${person.yearsExperience}`
+        )
+      )
+      // ineligiblePlayer.className = "ineligible-player"
       ineligiblePlayer.style.color = "red"
     }
-    listElement.append(li)
+    button.addEventListener("click", function () {
+      if (
+        person.canThrowBall == true &&
+        person.canDodgeBall == true &&
+        person.hasPaid == true &&
+        person.isHealthy == true &&
+        person.yearsExperience > 0
+      ) {
+        makePlayer(person)
+        li.removeChild(this)
+      } else {
+        ineligiblePlayer.style.textDecoration = "line-through"
+        alert(`${person.name} did not meet all pre-game criteria`)
+        ineligiblePlayer.removeChild(this)
+      }
+    })
   })
 }
 //END OF LIST PEOPLE BUTTON //
@@ -257,13 +289,11 @@ const makePlayer = (id) => {
   joesLI.className = "joes-team-list"
   const globoButton = document.createElement("BUTTON")
   const avgJoeButton = document.createElement("BUTTON")
+  globoButton.className = "globo-button"
+  avgJoeButton.className = "joe-button"
   eligibleLI.append(avgJoeButton)
   eligibleLI.append(globoButton)
-  eligibleLI.appendChild(
-    document.createTextNode(
-      id.name + " - " + "Years Exp: " + id.yearsExperience
-    )
-  )
+  eligibleLI.appendChild(document.createTextNode(`${id.name}`))
   globoButton.innerHTML = "Team Globo Gym"
   avgJoeButton.innerHTML = "Team Average Joes"
   eligibleList.append(eligibleLI)
@@ -289,9 +319,7 @@ const makePlayer = (id) => {
         )
       )
       globoList.append(globoLI)
-      globoLI.appendChild(
-        document.createTextNode(`${id.name} - Years Exp: ${id.yearsExperience}`)
-      )
+      globoLI.appendChild(document.createTextNode(`${id.name}`))
       eligibleLI.removeChild(this)
       eligibleLI.removeChild(avgJoeButton)
     } else if (
@@ -304,6 +332,7 @@ const makePlayer = (id) => {
       alert("Not Eligible")
     } else {
       alert("Globo Gym Team Full")
+      eligibleLI.removeChild(globoButton)
     }
   })
 
@@ -329,9 +358,7 @@ const makePlayer = (id) => {
         )
       )
       joesList.append(joesLI)
-      joesLI.appendChild(
-        document.createTextNode(`${id.name} - Years Exp: ${id.yearsExperience}`)
-      )
+      joesLI.appendChild(document.createTextNode(`${id.name}`))
       eligibleLI.removeChild(this)
       eligibleLI.removeChild(globoButton)
     } else if (
@@ -344,6 +371,7 @@ const makePlayer = (id) => {
       alert("Not Eligible")
     } else {
       alert("Average Joes Team Full")
+      eligibleLI.removeChild(avgJoeButton)
     }
   })
 }

@@ -1,6 +1,7 @@
 body {
   font-family: "Architects Daughter", cursive;
   font-size: 15px;
+  background-color: lightgoldenrodyellow;
   /* background-image: url(./67hjbt00.bmp);
   background-attachment: fixed;
   background-size: cover; */
@@ -9,8 +10,9 @@ body {
 button {
   border-radius: 5px;
   font-size: 10px;
-  background-color: forestgreen;
-  color: white;
+  background-color: springgreen;
+  color: black;
+  font-weight: bold;
 }
 
 button:focus {
@@ -20,20 +22,38 @@ button:focus {
 .globo-team-list {
   color: deeppink;
   background-color: white;
+  font-weight: bold;
 }
 
 .joes-team-list {
   color: deepskyblue;
   background-color: white;
+  font-weight: bold;
 }
 
 .people-list {
-  color: sandybrown;
+  color: black;
   font-weight: bold;
   background-color: white;
+  font-weight: bold;
 }
 
 .eligible-list {
   color: springgreen;
   background-color: white;
+  font-weight: bold;
+}
+
+.globo-button {
+  background-color: crimson;
+  color: white;
+}
+
+.joe-button {
+  background-color: royalblue;
+  color: white;
+}
+
+.ineligible-player {
+  color: red;
 }
