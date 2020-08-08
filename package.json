@@ -2,9 +2,9 @@
   "name": "eslint-prettier-boilerplate-configs",
   "version": "1.0.0",
   "description": "A repo to use to quickly setup ESLint using the Prettier Formatter and AirBNB code styling in VS Code",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "test": "mocha --no-timeouts"
+    "test": "mocha"
   },
   "keywords": [
     "eslint",
