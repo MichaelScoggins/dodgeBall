@@ -43,9 +43,9 @@
 // 3a. have them removed from the <div>List of People</div> and placed into the <div>Dodge Ball Eligible</div> column
 // 3b. and use class constructors to represent them as DodgeBallPlayers with new key/value pairs
 // 3c. while also .pushing them into 2 teams' respective arrays const globoGym = [], const avgJoes = []//
-// 4. utilize .map and HTML elements again to give each new DodgeBallPlayer two buttons to choose either team
-// 5. have each button once more utilize .map and HTML elements to populate them into one of two <div>Team Div</div> columns
+// 4. utilize .map and HTML/DOM elements again to give each new DodgeBallPlayer two buttons to choose either team
+// 5. have each button once more utilize .map and HTML/DOM elements to populate them into one of two <div>Team Div</div> columns
 // 6. use if() statements to prevent ineligible players from being drafted based on conditions stored in their key/value pairs
-// 7. use if() statement and HTML/CSS magic to signify ineligible player
+// 7. use if() statement and DOM/CSS magic to signify ineligible player
 // 8. use if() statement to prevent uneven teams
 // 9. finesse some css
