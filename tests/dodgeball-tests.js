@@ -3,8 +3,7 @@ const assert = require("assert")
 // import classes
 const {
   DodgeBallPlayer,
-  GloboGymTeammate,
-  AverageJoesTeammate,
+  Teammate,
   globoGym,
   makePlayer,
   arrOfPeople,
@@ -18,27 +17,27 @@ const {
 
 //3 tests//
 // 1. Should create new instance of DodgeBallPlayer
-// 2. Should be able to create instance of AverageJoesTeammate
+// 2. Should be able to create instance of Teammate
 // 3. Teammate Objects should have color and mascot keys
 
 if (typeof describe === "function") {
   describe("DodgeBallPlayer", () => {
     it("Should create new instance of DodgeBallPlayer", () => {
       const vinceVaughn = new DodgeBallPlayer(
-        "Vince Vaughn",
+        "Peter LaFleur",
         true,
         true,
         true,
         true,
         16
       )
-      assert.equal(vinceVaughn.player, "Vince Vaughn")
+      assert.equal(vinceVaughn.player, "Peter LaFleur")
     })
   })
-  describe("GloboGymTeammate", () => {
-    it("Should be able to create instance of AverageJoesTeammate", () => {
-      const vinceVaughnAvgJoe = new AverageJoesTeammate(
-        "Vince Vaughn",
+  describe("Teammate", () => {
+    it("Should be able to create instance of Teammate", () => {
+      const vinceVaughnTeammate = new Teammate(
+        "Peter LaFleur",
         true,
         true,
         true,
@@ -47,21 +46,21 @@ if (typeof describe === "function") {
         "Blue",
         "Average Joes"
       )
-      assert.equal(vinceVaughnAvgJoe.mascot, "Average Joes")
+      assert.equal(vinceVaughnTeammate.mascot, "Average Joes")
     })
     it("Teammate Objects should have color and mascot keys", () => {
-      const vinceVaughnAvgJoe = new AverageJoesTeammate(
-        "Vince Vaughn",
+      const benStillerTeammate = new Teammate(
+        "White Goodman",
         true,
         true,
         true,
         true,
         16,
-        "Blue",
-        "Average Joes"
+        "Red",
+        "Globo Gym"
       )
-      assert.equal(vinceVaughnAvgJoe.color, "Blue")
-      assert.equal(vinceVaughnAvgJoe.mascot, "Average Joes")
+      assert.equal(benStillerTeammate.color, "Red")
+      assert.equal(benStillerTeammate.mascot, "Globo Gym")
     })
   })
 }

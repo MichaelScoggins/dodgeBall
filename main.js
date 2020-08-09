@@ -123,36 +123,7 @@ class DodgeBallPlayer {
   }
 }
 
-class AverageJoesTeammate extends DodgeBallPlayer {
-  constructor(
-    player,
-    canThrowBall,
-    canDodgeBall,
-    hasPaid,
-    isHealthy,
-    yearsExperience,
-    color,
-    mascot
-  ) {
-    super(
-      player,
-      canThrowBall,
-      canDodgeBall,
-      hasPaid,
-      isHealthy,
-      yearsExperience
-    )
-    this.player = player
-    this.canThrowBall = canThrowBall
-    this.canDodgeBall = canDodgeBall
-    this.hasPaid = hasPaid
-    this.isHealthy = isHealthy
-    this.yearsExperience = yearsExperience
-    this.color = color
-    this.mascot = mascot
-  }
-}
-class GloboGymTeammate extends DodgeBallPlayer {
+class Teammate extends DodgeBallPlayer {
   constructor(
     player,
     canThrowBall,
@@ -226,6 +197,16 @@ const listPeopleChoices = () => {
         person.isHealthy == true &&
         person.yearsExperience > 0
       ) {
+        listOfPlayers.push(
+          new DodgeBallPlayer(
+            person.name,
+            person.canThrowBall,
+            person.canDodgeBall,
+            person.hasPaid,
+            person.isHealthy,
+            person.yearsExperience
+          )
+        )
         makePlayer(person)
         li.removeChild(this)
       } else {
@@ -269,13 +250,13 @@ const makePlayer = (id) => {
       id.yearsExperience > 0
     ) {
       globoGym.push(
-        new GloboGymTeammate(
+        new Teammate(
           id.name,
           id.canThrowBall,
           id.canDodgeBall,
           id.hasPaid,
           id.isHealthy,
-          id.yearsExp,
+          id.yearsExperience,
           "Red",
           "Purple Cobras"
         )
@@ -308,13 +289,13 @@ const makePlayer = (id) => {
       id.yearsExperience > 0
     ) {
       averageJoes.push(
-        new AverageJoesTeammate(
+        new Teammate(
           id.name,
           id.canThrowBall,
           id.canDodgeBall,
           id.hasPaid,
           id.isHealthy,
-          id.yearsExp,
+          id.yearsExperience,
           "Blue",
           "Joes"
         )
@@ -340,10 +321,10 @@ const makePlayer = (id) => {
 // END OF MAKEPLAYER BUTTON //
 
 module.exports = {
-  GloboGymTeammate,
+  Teammate,
   DodgeBallPlayer,
-  AverageJoesTeammate,
   globoGym,
   makePlayer,
   arrOfPeople,
+  listOfPlayers,
 }
