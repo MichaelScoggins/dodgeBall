@@ -4,26 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Lobster&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
     <title>Dodge Ball</title>
   </head>
-  <body>
+  <body id="body">
     <div>
       <h4>List Of People</h4>
       <ul id="people"></ul>
     </div>
-    <button onclick="listPeopleChoices()">List People</button>
+    <button id="list-people-button" onclick="listPeopleChoices()">
+      List People
+    </button>
     <div>
-      <h4>Dodge Ball Players</h4>
+      <h4>Dodge Ball Eligible</h4>
       <ul id="players"></ul>
     </div>
     <div>
-      <h4>Globo Gym</h4>
+      <h4>Team Globo Gym</h4>
       <ul id="globo"></ul>
     </div>
     <div>
-      <h4>Average Joe's</h4>
+      <h4>Team Average Joes</h4>
       <ul id="joes"></ul>
     </div>
-    <script src="./main.js"></script>
+    <script defer src="./main.js"></script>
   </body>
 </html>
