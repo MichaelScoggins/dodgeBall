@@ -24,7 +24,7 @@
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-hooks": "^4.0.0",
     "prettier": "^2.0.5",
-    "mocha": "^8.1.0"
+    "mocha": "^8.4.0"
   },
   "dependencies": {
     "assert": "^2.0.0",
